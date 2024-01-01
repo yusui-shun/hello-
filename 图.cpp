@@ -47,5 +47,6 @@ void removeVertex(GraphAdjMat *graph,int index){
 	}
 }
 int main(){
+	1
 	return 0; 
 }
