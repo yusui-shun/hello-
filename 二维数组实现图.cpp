@@ -1,11 +1,12 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<assert.h>
+#define MAX_SIZE 100
 typedef struct{
 	int vertices[MAX_SIZE];
-	int adjMat[MAX_SIZE][MAX_SIZE;
+	int adjMat[MAX_SIZE][MAX_SIZE];
 	int size;
-}GraphAdMat;
+}GraphAdjMat;
 GraphAdjMat *newGrapgAdjMat(){
 	GraphAdjMat *graph=(GraphAdjMat*)malloc(sizeof(GraphAdjMat));
 	graph->size=0;
@@ -26,7 +27,7 @@ void addVertex(GraphAdjMat *graph,int val){
 	}
 	int n=graph->size;
 	graph->vertices[n]=val;
-	for(int i=0;i<=n;i++)	graph->adjMat[n][j]=graph->adjMat[i][n]=0;
+	for(int i=0;i<=n;i++)	graph->adjMat[n][i]=graph->adjMat[i][n]=0;
 	graph->size++;
 }
 void removeVertex(GraphAdjMat *graph,int index){
@@ -34,7 +35,7 @@ void removeVertex(GraphAdjMat *graph,int index){
 		printf("顶点索引越界\n");
 		return ;
 	}
-	for(int i=index;i<graph->sizz-1;i++){
+	for(int i=index;i<graph->size-1;i++){
 		graph->vertices[i]=graph->vertices[i+1];
 	}
 	for(int i=index;i<graph->size-1;i++){
@@ -43,10 +44,28 @@ void removeVertex(GraphAdjMat *graph,int index){
 		}
 	}
 	for(int i=0;i<graph->size;i++){
-		for(int j=index)
+		for(int j=index;j<graph->size-1;j++)	graph->adjMat[i][j]=graph->adjMat[i][j+1];
 	}
+	graph->size--;
+}
+void addEdge(GraphAdjMat *graph,int i,int j){
+	if(i<0||j<0||i>=graph->size||j>=graph->size||i==j){
+		printf("边索引越界或相等\n");
+		return ;
+	}
+	graph->adjMat[i][j]=1;
+	graph->adjMat[j][i]=1;
+}
+void removeEdge(GraphAdjMat *graph,int i,int j){
+	if(i<0||j<0||i>=graph->size||j>=graph->size||i==j){
+		printf("边索引越界或相等\n");
+		return ;
+	}
+	graph->adjMat[i][j]=0;
+	graph->adjMat[j][i]=0;
 }
 int main(){
-	1
+	GraphAdjMat *image=newGrapgAdjMat();
+	addVertex(image,1);
 	return 0; 
 }
