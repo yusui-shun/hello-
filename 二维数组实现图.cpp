@@ -7,11 +7,7 @@ typedef struct{
 	int adjMat[MAX_SIZE][MAX_SIZE];
 	int size;
 }GraphAdjMat;
-<<<<<<< HEAD:二维数组实现图.cpp
-GraphAdjMat *newGrapgAdjMat(){
-=======
 GraphAdjMat *newGraphAdjMat(){
->>>>>>> refs/remotes/origin/main:图.cpp
 	GraphAdjMat *graph=(GraphAdjMat*)malloc(sizeof(GraphAdjMat));
 	graph->size=0;
 	for(int i=0;i<MAX_SIZE;i++){
